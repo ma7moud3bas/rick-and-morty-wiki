@@ -38,7 +38,7 @@ export default async function Page({ params }: Props) {
                         Last known location: <Link href={`/locations/${location.id}`} className={"font-semibold text-lg"}>{location.name}</Link>
                     </Text>
 
-                    <Text as="p" variant="large/semibold" color={"light"}>
+                    <Text as="p" variant="large/semibold">
                         First seen in: <Link href={`/episodes/${episode[0].id}`} className={"font-semibold text-lg "}>{episode[0].name}</Link>
                     </Text>
                     {

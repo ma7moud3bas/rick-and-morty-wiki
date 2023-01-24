@@ -1,4 +1,4 @@
-import NotImplemented from "@/components/NotImplemented"
+import NotImplemented from "@UI/NotImplemented"
 export default function Page() {
     return (<NotImplemented />)
 }

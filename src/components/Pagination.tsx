@@ -11,7 +11,6 @@ interface Props {
 const maxPerPage = 20
 
 export default function Example({ pages, count, currentCount, next, prev, goForward, goBack }: Props) {
-    console.log(prev, next)
     const currentPage = !prev ? 1 : (!next ? pages : prev + 1) || 1
     const currentStart = (currentPage * maxPerPage) - maxPerPage
     const currentEnd = (currentStart + currentCount)

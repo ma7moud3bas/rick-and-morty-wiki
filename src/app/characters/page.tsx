@@ -1,8 +1,8 @@
 "use client"
+
 // normally I would use a query library like react query or maybe use the new React hook "use" with a cache controller, 
 // or since I'm using a graphql api I'd use something like Apollo client.
 // but the task requested redux or something similar. I'd normally leave redux to a more complex situation. 
-
 
 import { Dispatch, useReducer, useEffect, useState } from "react"
 import SearchBar from "@/components/SearchBar"
