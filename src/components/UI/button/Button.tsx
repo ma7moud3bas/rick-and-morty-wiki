@@ -1,8 +1,10 @@
+"use client"
+
 import { cva, VariantProps } from "cva";
-import { ButtonOrLink, Props as ButtonOrLinkProps } from "./ButtonOrLink";
+import { ButtonOrLink, Props as ButtonOrLinkProps } from "../ButtonOrLink";
 
 const buttonStyles = cva(
-    "rounded py-2 px-3 flex text-center items-center justify-center font-medium font-satoshi focus:outline-none focus:ring-2 focus:ring-offset-white dark:focus:ring-offset-black focus:ring-offset-1 disabled:opacity-60 disabled:pointer-events-none hover:bg-opacity-80",
+    "rounded py-3 px-6 flex text-center items-center justify-center font-medium font-satoshi focus:outline-none focus:ring-2 focus:ring-offset-white dark:focus:ring-offset-black focus:ring-offset-1 disabled:opacity-60 disabled:pointer-events-none hover:bg-opacity-80",
     {
         variants: {
             intent: {

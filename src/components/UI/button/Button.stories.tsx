@@ -4,6 +4,7 @@ import Button, { ButtonProps } from "@UI/button"
 export default {
     title: "UI/Button",
     component: Button,
+    tags: ["autodocs"],
     argTypes: {
         fullWidth: {
             type: 'boolean',
@@ -15,46 +16,23 @@ export default {
 type Story = StoryObj<ButtonProps>
 
 export const Primary: Story = {
-    render: (props: ButtonProps) => {
-        return (
-            <div>
-                <Button {...props}>
-                    Button
-                </Button>
-            </div>
-        )
-    },
     args: {
         intent: "primary",
-        fullWidth: true
+        fullWidth: true,
+        children: "Button",
     },
 }
+
 export const Secondary: Story = {
-    render: (props: ButtonProps) => {
-        return (
-            <div>
-                <Button {...props}>
-                    Button
-                </Button>
-            </div>
-        )
-    },
     args: {
         intent: "secondary",
+        children: "Button"
     }
 }
 
 export const Danger: Story = {
-    render: (props: ButtonProps) => {
-        return (
-            <div>
-                <Button {...props}>
-                    Button
-                </Button>
-            </div>
-        )
-    },
     args: {
         intent: "danger",
+        children: "Button"
     }
-} 
+}

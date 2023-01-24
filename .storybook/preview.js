@@ -8,3 +8,6 @@ export const parameters = {
     },
   },
 }
+export const globalTypes = {
+  darkMode: false,
+};

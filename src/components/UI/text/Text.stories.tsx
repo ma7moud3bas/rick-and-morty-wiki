@@ -21,7 +21,7 @@ export const Large: Story = {
             <>
                 {
                     variants.map((variant) => (
-                        <Text variant={variant}>
+                        <Text key={variant} variant={variant}>
                             {variant}
                         </Text>
                     )
@@ -46,7 +46,7 @@ export const Medium: Story = {
             <>
                 {
                     variants.map((variant) => (
-                        <Text variant={variant}>
+                        <Text key={variant} variant={variant}>
                             {variant}
                         </Text>
                     )
@@ -70,7 +70,7 @@ export const Small: Story = {
             <>
                 {
                     variants.map((variant) => (
-                        <Text variant={variant}>
+                        <Text key={variant} variant={variant}>
                             {variant}
                         </Text>
                     )

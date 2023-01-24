@@ -1,3 +1,4 @@
+import Navbar from '@UI/navbar'
 import { NextSeo } from 'next-seo'
 import './globals.css'
 
@@ -6,6 +7,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
       <head>
@@ -19,7 +21,10 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest"></link>
       </head>
       <body>
-        {children}
+        <main className='min-h-screen flex flex-col font-satoshi'>
+          <Navbar />
+          {children}
+        </main>
       </body>
     </html>
   )

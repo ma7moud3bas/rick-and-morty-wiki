@@ -6,12 +6,12 @@ export default function Head() {
       <NextSeo
         useAppDir={true}
         title="Rick and Morty Wiki"
-        description="All info about the TV show Rick and Morty"
+        description="Explore the Universe of Rick and Morty!"
         canonical={"https://rick-n-morty-wiki.vercel.app"}
         openGraph={
           {
             title: "Rick and Morty Wiki",
-            description: "Get all the information about the TV show Rick and Morty",
+            description: "Explore the Universe of Rick and Morty!",
             url: "https://rick-n-morty-wiki.vercel.app/",
             images: [
               {
