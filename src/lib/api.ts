@@ -1,6 +1,6 @@
 import { Character } from "@/types/character"
 
-interface CharacterResponse {
+export interface CharacterResponse {
     data: {
         character: Character
     }

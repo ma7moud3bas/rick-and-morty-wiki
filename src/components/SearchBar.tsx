@@ -1,6 +1,6 @@
 "use client"
 
-import { KeyboardEvent, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 
 interface Props {
     value: string

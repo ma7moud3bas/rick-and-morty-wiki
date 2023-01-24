@@ -6,6 +6,9 @@ type Props = {
 }
 export default async function Head({ params }: Props) {
     const { data } = await getCharacter(params.id)
+    if (!data.character) {
+        throw Error("Character not found", { cause: "NOT_FOUND" })
+    }
     const { name, image, status } = data.character
     return (
         <>

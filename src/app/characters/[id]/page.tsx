@@ -2,6 +2,10 @@ import { getCharacter } from "@/lib/api"
 import Image from "next/image"
 import Text from "@UI/text"
 import Link from "@UI/link"
+
+// revalidate every time
+export const revalidate = 0
+
 type Props = {
     params: {
         id: string
@@ -22,18 +26,20 @@ export default async function Page({ params }: Props) {
                 </div>
                 <div className="flex flex-col justify-center gap-3">
                     <Text as="h1" variant="2xl/bold">{name}</Text>
+
                     <div className="flex gap-2 items-center mt-2">
                         <div className={`h-3 w-3 rounded-full ${status === "Alive" ? "bg-brand-green" : "bg-red-400"}`}></div>
                         <Text as="p" variant="large/semibold"> {status} - {species}</Text>
                     </div>
+
                     <Text as="h1" variant="large/semibold">Gender: {gender}</Text>
 
                     <Text as="p" variant="large/semibold">
                         Last known location: <Link href={`/locations/${location.id}`} className={"font-semibold text-lg"}>{location.name}</Link>
                     </Text>
 
-                    <Text as="p" variant="large/semibold">
-                        First seen in: <Link href={`/episodes/${episode[0].id}`} className={"font-semibold text-lg"}>{episode[0].name}</Link>
+                    <Text as="p" variant="large/semibold" color={"light"}>
+                        First seen in: <Link href={`/episodes/${episode[0].id}`} className={"font-semibold text-lg "}>{episode[0].name}</Link>
                     </Text>
                     {
                         episode.length !== 1 &&

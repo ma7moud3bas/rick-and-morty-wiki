@@ -7,32 +7,62 @@
 import { Dispatch, useReducer, useEffect, useState } from "react"
 import SearchBar from "@/components/SearchBar"
 import CharactersContainer from "@/components/CharactersContainer"
+import Pagination from "@/components/Pagination"
 import { getCharacters } from "@/lib/api"
-import { flushSync } from 'react-dom';
 
 type State = {
     data: any[]
     isLoading: boolean
     error?: string,
     searchKey: string
+    pages: number | null
+    next: number | null
+    prev: number | null
+    count: number | null
 }
 
 type Action =
     | { type: 'request', }
-    | { type: 'success', results: character[] }
+    | {
+        type: 'success', results: {
+            info: {
+                pages: number
+                count: number
+                next: number
+                prev: number
+            }
+            results: character[]
+        }
+    }
     | { type: 'failure', error: string }
     | { type: 'setSearchKey', searchKey: string }
+    | { type: "nextPage" }
+    | { type: "prevPage" }
 
 type character = {}
 
 function reducer(state: State, action: Action): State {
     switch (action.type) {
+        case "nextPage": {
+            if (state.next) {
+                return { ...state, prev: state.prev ? state.prev + 1 : 1, next: state.next === state.pages ? null : state.next + 1 }
+            } else {
+                return state
+            }
+        }
+        case "prevPage": {
+            if (state.prev) {
+                return { ...state, prev: state.prev === 1 ? null : state.prev - 1, next: state.next ? state.next - 1 : 2 }
+            } else {
+                return state
+            }
+        }
         case "request": {
             return { ...state, isLoading: true }
         };
 
         case "success": {
-            return { ...state, isLoading: false, data: action.results }
+            return { ...state, isLoading: false, ...action.results.info, data: action.results.results }
         };
 
         case "failure": {
@@ -40,7 +70,7 @@ function reducer(state: State, action: Action): State {
         };
 
         case "setSearchKey": {
-            return { ...state, searchKey: action.searchKey }
+            return { ...state, searchKey: action.searchKey, pages: 1, next: null, prev: null, count: null }
         };
 
         default: {
@@ -49,7 +79,7 @@ function reducer(state: State, action: Action): State {
     }
 }
 
-const initialState = { isLoading: true, data: [], searchKey: "" }
+const initialState: State = { isLoading: true, data: [], searchKey: "", pages: 0, next: null, prev: null, count: null }
 
 
 
@@ -57,10 +87,11 @@ const useLiveSearch = (dispatch: Dispatch<Action>, searchKey: string, page?: num
     useEffect(() => {
         const controller = new AbortController();
         (async function () {
+            dispatch({ type: "request" })
             try {
                 const { data } = await getCharacters(page || 1, searchKey, controller.signal)
                 if (data.characters) {
-                    dispatch({ type: "success", results: data.characters.results })
+                    dispatch({ type: "success", results: data.characters })
                 }
             } catch (err) {
                 console.error(err)
@@ -69,7 +100,7 @@ const useLiveSearch = (dispatch: Dispatch<Action>, searchKey: string, page?: num
 
         })()
         return () => controller.abort()
-    }, [searchKey])
+    }, [searchKey, page])
 }
 
 
@@ -80,20 +111,21 @@ export default function Page() {
     useEffect(() => {
         const timeOut = setTimeout(() => {
             dispatch({ type: "setSearchKey", searchKey: debounceValue })
-            flushSync(() => {
-                dispatch({ type: "request" })
-            });
-        }, 300);
+        }, 400);
         return () => clearTimeout(timeOut)
     }, [debounceValue])
 
-    useLiveSearch(dispatch, searchKey)
+    useLiveSearch(dispatch, searchKey, state.prev ? state.prev + 1 : 1)
 
     return (
         <section className="container min-h-hero px-8 mx-auto py-12 md:py-20  flex flex-col">
             <div className="max-w-5xl mx-auto w-full gap-y-20 flex flex-col ">
                 <SearchBar value={debounceValue} onChange={(key: string) => setDebounceValue(key)} />
                 <CharactersContainer {...{ isLoading, data, error }} />
+                <Pagination next={state.next} prev={state.prev} count={state.count} pages={state.pages} currentCount={data.length}
+                    goForward={() => dispatch({ type: "nextPage" })}
+                    goBack={() => dispatch({ type: "prevPage" })}
+                />
             </div>
         </section>
     )

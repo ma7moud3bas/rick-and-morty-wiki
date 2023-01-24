@@ -5,23 +5,36 @@ import Image from "next/image"
 import Text from "@UI/text"
 import Link from "@UI/link"
 import NextLink from "next/link"
+
 interface Props {
     data: Character[]
     error?: string
     isLoading: boolean
 }
 
+const SpinnerIcon = ({ width, height }: { width: number, height: number }) => <svg xmlns="http://www.w3.org/2000/svg" width={height} height={width} fill="currentcolor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M168,40.7a96,96,0,1,1-80,0" fill="none" stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></path></svg>
+
 export default function CharactersContainer({ data, error, isLoading }: Props) {
-    if (isLoading && data.length === 0) {
-        return (
-            <div>
-                loading.................
-            </div>
-        )
-    }
     return (
         <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
             {
+                isLoading && data.length === 0 &&
+                <div className="w-full flex items-center justify-center py-4 col-span-full mt-32">
+                    <div className="animate-spin text-black flex items-center justify-center">
+                        <SpinnerIcon width={60} height={60} />
+                    </div>
+                </div>
+            }
+            {
+                !isLoading && data.length === 0 &&
+                <div className="w-full flex items-center justify-center py-4 col-span-full mt-32">
+                    <div className="text-black flex items-center justify-center">
+                        <Text variant="2xl/bold">No results found!</Text>
+                    </div>
+                </div>
+            }
+            {
+                data.length !== 0 &&
                 data.map((character) => (
                     <NextLink href={`/characters/${character.id}`} key={character.id} className="grid grid-cols-1 md:grid-cols-2 rounded shadow-xl bg-brand-dark">
                         <Image className="rounded object-cover h-full w-full" src={character.image} width="300" height="300" alt={`${character.name} image`} />
