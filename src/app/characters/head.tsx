@@ -7,12 +7,12 @@ export default function Head() {
                 useAppDir={true}
                 title={`Browse Characters | Rick and morty Wiki`}
                 description={"Search all Rick and Morty characters"}
-                canonical={`https://rick-n-morty-wiki.vercel.app/characters`}
+                canonical={`https://rick-and-morty-wiki-ma.vercel.app/characters`}
                 openGraph={
                     {
                         title: `Browse Characters | Rick and morty Wiki`,
                         description: "Search all Rick and Morty characters",
-                        url: `https://rick-n-morty-wiki.vercel.app/characters`,
+                        url: `https://rick-and-morty-wiki-ma.vercel.app/characters`,
                         images: [
                             {
                                 url: "/OGImage.webp"

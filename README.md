@@ -63,7 +63,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://rick-n-morty-wiki.vercel.app)
+- [Live Demo Link](https://rick-and-morty-wiki-ma.vercel.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
