@@ -16,12 +16,12 @@ export default async function Head({ params }: Props) {
                 useAppDir={true}
                 title={`${name} | Rick and morty Wiki`}
                 description={name}
-                canonical={`https://rick-n-morty-wiki.vercel.app/characters/${params.id}`}
+                canonical={`https://rick-and-morty-wiki-ma.vercel.app/characters/${params.id}`}
                 openGraph={
                     {
                         title: name,
                         description: `${name} - ${status}`,
-                        url: `https://rick-n-morty-wiki.vercel.app/characters/${params.id}`,
+                        url: `https://rick-and-morty-wiki-ma.vercel.app/characters/${params.id}`,
                         images: [
                             {
                                 url: image
