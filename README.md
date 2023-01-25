@@ -1,38 +1,155 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a name="readme-top"></a>
 
-## Getting Started
+<div align="center">
+  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
+  <img src="./public/assets/images/rick-and-morty-portal.png" alt="logo" width="300"  height="auto" />
+  <br/>
 
-First, run the development server:
+  <h3><b>Rick and Morty Wiki</b></h3>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+</div>
+
+<!-- TABLE OF CONTENTS -->
+
+# 📗 Table of Contents
+
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+- [👥 Authors](#authors)
+- [⭐️ Show your support](#support)
+- [📝 License](#license)
+
+<!-- PROJECT DESCRIPTION -->
+
+# 📖 Rick and Morty Wiki <a name="about-project"></a>
+
+**Rick and Morty Wiki** is a fan made website that let's users get information on their favorite Tv show. 
+
+## 🛠 Built With <a name="built-with"></a>
+
+### Tech Stack <a name="tech-stack"></a>
+
+<details>
+  <ul>
+    <li><a href="https://beta.nextjs.org/">Next.js 13</a></li>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://tailwindcss.com/">Tailwind CSS</a></li>
+    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+    <li><a href="https://www.storybook.js.org/">StoryBook</a></li>
+    <li><a href="https://www.npmjs.com/package/class-variance-authority">Class Variant Authority</a></li>
+    <li><a href="https://www.npmjs.com/package/next-seo">Next-SEO</a></li>
+  </ul>
+</details>
+
+<!-- Features -->
+
+### Key Features <a name="key-features"></a>
+
+- **Search for characters, episodes, and locations**
+- **View Character details**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://rick-n-morty-wiki.vercel.app)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you will have these installed on your machine: 
+
+- [Node.js](https://nodejs.org/en/) 
+- [git](https://git-scm.com/) 
+- [yarn](https://classic.yarnpkg.com/en/) 
+
+
+### Setup
+
+Clone this repository to your desired folder:
+
+
+```sh
+  cd my-folder
+  git clone git@github.com:ma7moud3bas/rick-and-morty-wiki.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Install
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Install this project with:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```sh
+  cd my-project
+  yarn
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run the project in your local environment, execute the following command:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```sh
+  yarn run dev
+```
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Run tests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+currently only UI components are tested.
+to test them, run the following command:
+
+
+```sh
+  yarn run storybook
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+👤 **Mahmoud Abbas**
+
+- GitHub: [@Ma7moud3bas](https://github.com/Ma7moud3bas)
+- LinkedIn: [Mahmoud Abbas](https://linkedin.com/in/mahmoud-m-abbas)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project, show your support by giving it a star.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
