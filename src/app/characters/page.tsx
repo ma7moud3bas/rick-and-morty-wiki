@@ -42,6 +42,7 @@ type Action =
 type character = {}
 
 function reducer(state: State, action: Action): State {
+    console.log(action.type)
     switch (action.type) {
         case "nextPage": {
             if (state.next) {
@@ -79,7 +80,7 @@ function reducer(state: State, action: Action): State {
     }
 }
 
-const initialState: State = { isLoading: true, data: [], searchKey: "", pages: 0, next: null, prev: null, count: null }
+const initialState: State = { isLoading: true, data: [], searchKey: "", pages: 1, next: null, prev: null, count: null }
 
 
 
@@ -109,13 +110,16 @@ export default function Page() {
     const { searchKey, data, isLoading, error } = state;
     const [debounceValue, setDebounceValue] = useState("")
     useEffect(() => {
+        if (debounceValue.length < 3) return
         const timeOut = setTimeout(() => {
             dispatch({ type: "setSearchKey", searchKey: debounceValue })
         }, 400);
         return () => clearTimeout(timeOut)
     }, [debounceValue])
 
+
     useLiveSearch(dispatch, searchKey, state.prev ? state.prev + 1 : 1)
+
 
     return (
         <section className="container min-h-hero px-8 mx-auto py-12 md:py-20  flex flex-col">
