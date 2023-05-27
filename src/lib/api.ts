@@ -2,7 +2,7 @@ import { Character } from "@/types/character"
 
 export interface CharacterResponse {
     data: {
-        character: Character
+        character: Character & { gender: string }
     }
 }
 

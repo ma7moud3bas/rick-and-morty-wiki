@@ -29,10 +29,3 @@ export const Secondary: Story = {
         children: "Button"
     }
 }
-
-export const Danger: Story = {
-    args: {
-        intent: "danger",
-        children: "Button"
-    }
-}

@@ -16,11 +16,11 @@ const SpinnerIcon = ({ width, height }: { width: number, height: number }) => <s
 
 export default function CharactersContainer({ data, error, isLoading }: Props) {
     return (
-        <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+        <section role={"list"} className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
             {
                 isLoading && data.length === 0 &&
                 <div className="w-full flex items-center justify-center py-4 col-span-full mt-32">
-                    <div className="animate-spin text-black flex items-center justify-center">
+                    <div data-testid="loader" className="animate-spin text-black flex items-center justify-center">
                         <SpinnerIcon width={60} height={60} />
                     </div>
                 </div>
@@ -41,7 +41,7 @@ export default function CharactersContainer({ data, error, isLoading }: Props) {
                         <div className="flex flex-col justify-center gap-2 px-4 py-3">
                             <Text color="light" as="h1" variant="2xl/bold">{character.name}</Text>
                             <div className="flex gap-2 items-center mt-1">
-                                <div className={`h-3 w-3 rounded-full ${character.status === "Alive" ? "bg-brand-green" : "bg-red-400"}`}></div>
+                                <div data-testid="status-dot" className={`h-3 w-3 rounded-full ${character.status === "Alive" ? "bg-brand-green" : "bg-red-400"}`}></div>
                                 <Text color="light" as="p" variant="medium/semibold"> {character.status} - {character.species}</Text>
                             </div>
                             <Text color="light" as="p" variant="medium/semibold">

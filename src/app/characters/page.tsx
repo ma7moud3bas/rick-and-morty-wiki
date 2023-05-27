@@ -1,14 +1,10 @@
 "use client"
 
-// normally I would use a query library like react query or maybe use the new React hook "use" with a cache controller, 
-// or since I'm using a graphql api I'd use something like Apollo client.
-// but the task requested redux or something similar. I'd normally leave redux to a more complex situation. 
-
-import { Dispatch, useReducer, useEffect, useState } from "react"
+import { useReducer, useEffect, useState } from "react"
 import SearchBar from "@/components/SearchBar"
 import CharactersContainer from "@/components/CharactersContainer"
 import Pagination from "@/components/Pagination"
-import { getCharacters } from "@/lib/api"
+import { useLiveSearch } from "@/lib/hooks"
 
 type State = {
     data: any[]
@@ -42,7 +38,6 @@ type Action =
 type character = {}
 
 function reducer(state: State, action: Action): State {
-    console.log(action.type)
     switch (action.type) {
         case "nextPage": {
             if (state.next) {
@@ -51,6 +46,7 @@ function reducer(state: State, action: Action): State {
                 return state
             }
         }
+
         case "prevPage": {
             if (state.prev) {
                 return { ...state, prev: state.prev === 1 ? null : state.prev - 1, next: state.next ? state.next - 1 : 2 }
@@ -58,6 +54,7 @@ function reducer(state: State, action: Action): State {
                 return state
             }
         }
+
         case "request": {
             return { ...state, isLoading: true }
         };
@@ -84,31 +81,11 @@ const initialState: State = { isLoading: true, data: [], searchKey: "", pages: 1
 
 
 
-const useLiveSearch = (dispatch: Dispatch<Action>, searchKey: string, page?: number) => {
-    useEffect(() => {
-        const controller = new AbortController();
-        (async function () {
-            dispatch({ type: "request" })
-            try {
-                const { data } = await getCharacters(page || 1, searchKey, controller.signal)
-                if (data.characters) {
-                    dispatch({ type: "success", results: data.characters })
-                }
-            } catch (err) {
-                console.error(err)
-                dispatch({ "type": "failure", error: "Something went wrong" })
-            }
-
-        })()
-        return () => controller.abort()
-    }, [searchKey, page])
-}
-
-
 export default function Page() {
     const [state, dispatch] = useReducer(reducer, initialState)
     const { searchKey, data, isLoading, error } = state;
     const [debounceValue, setDebounceValue] = useState("")
+
     useEffect(() => {
         if (debounceValue.length < 3) return
         const timeOut = setTimeout(() => {
@@ -117,10 +94,7 @@ export default function Page() {
         return () => clearTimeout(timeOut)
     }, [debounceValue])
 
-
     useLiveSearch(dispatch, searchKey, state.prev ? state.prev + 1 : 1)
-
-
     return (
         <section className="container min-h-hero px-8 mx-auto py-12 md:py-20  flex flex-col">
             <div className="max-w-5xl mx-auto w-full gap-y-20 flex flex-col ">

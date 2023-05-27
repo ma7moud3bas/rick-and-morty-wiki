@@ -10,14 +10,20 @@ const buttonStyles = cva(
             intent: {
                 primary: "text-white bg-brand-green",
                 secondary: " bg-gray-200 text-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 focus:ring-gray-500",
-                danger: "bg-red-500 text-white focus:ring-red-500"
             },
             fullWidth: {
                 true: "w-full",
+            },
+            borders: {
+                pill: "rounded-full",
+                lg: "rounded-lg",
+                sharp: ""
             }
+
         },
         defaultVariants: {
             intent: "primary",
+            borders: "pill"
         }
     })
 
