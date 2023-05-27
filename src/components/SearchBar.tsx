@@ -30,7 +30,7 @@ export default function SearchBar({ onChange, value }: Props) {
                 ref={InputRef}
                 type="text"
                 name="search"
-                id="search"
+                data-testid="searchbox"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 className="block w-full h-full rounded-md border-gray-300 pl-4 text-lg font-medium text-brand-dark pr-12 shadow-sm focus:outline-brand-dark focus:ring-brand-green "

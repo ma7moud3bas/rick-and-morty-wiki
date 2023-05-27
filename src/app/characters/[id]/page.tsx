@@ -14,9 +14,11 @@ type Props = {
 
 export default async function Page({ params }: Props) {
     const { data } = await getCharacter(params.id)
+
     if (!data.character) {
         throw Error("Character not found", { cause: "NOT_FOUND" })
     }
+
     const { name, image, species, status, location, episode, gender } = data.character
     return (
         <section className="container mx-auto px-8 md:min-h-hero pt-16 md:pb-32 flex items-center md:justify-center">
